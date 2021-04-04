@@ -1,6 +1,6 @@
-FROM node:12.16 as builder
+FROM node:12.16-alpine
 
-WORKDIR /opt/build
+WORKDIR /opt/app
 
 COPY . .
 
@@ -11,21 +11,7 @@ RUN npm audit fix
 RUN npm run build
 # cleans the build
 RUN npm prune --production
-# Creates and changes to app folder
-
-WORKDIR /opt/app
-
-# moves the application builded to app folder
-RUN mv /opt/build/node_modules ./node_modules
-RUN mv /opt/build/dist ./dist
-RUN mv /opt/build/package.json ./package.json
-
-FROM node:12.16-alpine as release
-
-WORKDIR /opt/app
-
-COPY --from=builder /opt/app .
 
 EXPOSE 3000
 
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "start:prod" ]
