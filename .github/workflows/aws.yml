@@ -76,6 +76,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: ecs-next-test
-        cluster: nest-test
+        service: ecs-nest-test
+        cluster: nest-test-cluster
         wait-for-service-stability: true
