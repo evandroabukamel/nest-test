@@ -3,22 +3,28 @@
   "executionRoleArn": "arn:aws:iam::129968275651:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
   "containerDefinitions": [
-      {
-          "name": "nest-test",
-          "image": "129968275651.dkr.ecr.us-east-1.amazonaws.com/nest-test:latest",
-          "portMappings": [
-              {
-                  "containerPort": 3000,
-                  "hostPort": 3000,
-                  "protocol": "tcp"
-              }
-          ],
-          "essential": true
+    {
+      "name": "nest-test",
+      "image": "129968275651.dkr.ecr.us-east-1.amazonaws.com/nest-test:latest",
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "awslogs-nest-test",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "awslogs-nest-test"
+        }
       }
+    }
   ],
-  "requiresCompatibilities": [
-      "FARGATE"
-  ],
+  "requiresCompatibilities": ["FARGATE"],
   "cpu": "512",
   "memory": "1024"
 }
