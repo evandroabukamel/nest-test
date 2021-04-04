@@ -13,15 +13,7 @@
           "protocol": "tcp"
         }
       ],
-      "essential": true,
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "awslogs-nest-test",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "awslogs-nest-test"
-        }
-      }
+      "essential": true
     }
   ],
   "requiresCompatibilities": ["FARGATE"],
