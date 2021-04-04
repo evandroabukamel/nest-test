@@ -1,5 +1,5 @@
 {
-  "family": "nsxt-test",
+  "family": "nest-test",
   "executionRoleArn": "arn:aws:iam::129968275651:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
   "containerDefinitions": [
